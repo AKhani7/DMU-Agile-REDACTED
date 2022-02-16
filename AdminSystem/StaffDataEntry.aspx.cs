@@ -10,7 +10,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        // If any pre-existing error is there, it should clear it.
+        lblError.Text = "";
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -49,5 +50,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["sampleStaffData"] = sampleStaffData;
         // This will make it navigate to the Viewer page.
         Response.Redirect("StaffViewer.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+
+        // Creates an instance of the Staff class, necessary to find anything else.
+        clsStaff findStaff = new clsStaff();
+        // Variable that stores the primary key.
+        Int32 staffNo;
+        // Variable that's used to store the result of the find operation.
+        Boolean Found = false;
+        // Retrieves the primary key given by the end-user.
+        staffNo = Convert.ToInt32(txtStaffNo.Text);
+        // Looks for the record.
+        Found = findStaff.Find(staffNo);
+        // If it's found, then it will fill the remaining text boxes with the relevant information.
+        if (Found == true)
+        {
+            txtStaffName.Text = findStaff.StaffName;
+            txtStaffRole.Text = findStaff.StaffRole;
+            txtDateOfEmployment.Text = findStaff.DateAdded.ToString();
+            txtStaffSalary.Text = findStaff.StaffSalary.ToString();
+            // This one makes sure to click the checkbox IF it finds that the individual is employed or not.
+            chkIsEmployed.Checked = findStaff.IsEmployed;
+        }
+        // This simply states that, should it not find the entry, the error message simply states that the entry doesn't exist.
+        else
+            lblError.Text = "Entry not found in database, try another number.";
     }
 }

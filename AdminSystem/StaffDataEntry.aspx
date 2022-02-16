@@ -17,6 +17,7 @@
         <div id="lblStaffNo">
             <asp:Label ID="Label1" runat="server" Text="Staff No" width="165px"></asp:Label>
             <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="txtStaffNo_TextChanged" ></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" style="margin-left: 8px" Text="Find" OnClick="btnFind_Click" />
         </div>
         <asp:Label ID="lblStaffName" runat="server" Text="Staff Name" width="165px"></asp:Label>
         <asp:TextBox ID="txtStaffName" runat="server" ></asp:TextBox>
@@ -37,7 +38,7 @@
         <asp:Button ID="btnOk" runat="server" Text="OK" OnClick="btnOk_Click" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" style="margin-left: 5px" />
         <br />
-        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblError" runat="server" Font-Bold="True" Font-Italic="True" ForeColor="#FF5050"></asp:Label>
     </form>
 </body>
 </html>

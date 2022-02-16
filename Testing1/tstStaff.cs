@@ -93,5 +93,142 @@ namespace Testing1
             // Checks to see if they're both the same.
             Assert.AreEqual(sampleStaff.StaffSalary, fakeSalary);
         }
+
+        // The following will be used to ensure the hard-coded Find method works.
+
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            // Creates an instance of the class we wnat to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Tests to see if the result happens to be true.
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void StaffNoFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOK = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the staff number. 
+            if (sampleStaff.StaffNo != 1)
+            {
+                dataOK = false;                
+            }
+            Assert.IsTrue(dataOK);
+        } 
+        [TestMethod]
+        public void StaffNameFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOk = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the staff name.
+            if(sampleStaff.StaffName != "John Doe")
+            {
+                dataOk = false;
+            }
+            Assert.IsTrue(dataOk);
+        }
+        [TestMethod]
+        public void StaffRoleFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOk = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the staff role.
+            if (sampleStaff.StaffRole != "Manager")
+            {
+                dataOk = false;
+            }
+            Assert.IsTrue(dataOk);
+        }
+        [TestMethod]
+        public void DateOfEmploymentFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOk = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the date of employment.
+            if (sampleStaff.DateAdded != Convert.ToDateTime("21/04/2022 21:45:21"))
+            {
+                dataOk = false;
+            }
+            Assert.IsTrue(dataOk);
+        }
+        [TestMethod]
+        public void StaffSalaryFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOk = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the staff salary.
+            if (sampleStaff.StaffSalary != Convert.ToInt32(24000))
+            {
+                dataOk = false;
+            }
+            Assert.IsTrue(dataOk);
+        }
+        [TestMethod]
+        public void IsEmployedFindOk()
+        {
+            // Creates an instance of the class we want to create.
+            clsStaff sampleStaff = new clsStaff();
+            // Boolean variable that'll store the results of the validation check.
+            Boolean Found = false;
+            // Boolean variable to record if data is okay.
+            Boolean dataOk = true;
+            // Creates some sample test data to use with this method.
+            Int32 StaffNo = 1;
+            // Invokes the method.
+            Found = sampleStaff.Find(StaffNo);
+            // Checks the boolean IsEmployed.
+            if (sampleStaff.IsEmployed != true)
+            {
+                dataOk = false;
+            }
+            Assert.IsTrue(dataOk);
+        }
     }
 }
