@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <div id="lblStaffNo">
             <asp:Label ID="Label1" runat="server" Text="Staff No" width="165px"></asp:Label>
-            <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="txtStaffNo_TextChanged" ></asp:TextBox>
+            <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="txtStaffNo_TextChanged" ToolTip="Must be an integer value, else an error will occur." ></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" style="margin-left: 8px" Text="Find" OnClick="btnFind_Click" />
         </div>
         <asp:Label ID="lblStaffName" runat="server" Text="Staff Name" width="165px"></asp:Label>
@@ -29,7 +29,7 @@
         <asp:TextBox ID="txtStaffSalary" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lblDateOfEmployment" runat="server" Text="Date Of Employment"></asp:Label>
-        <asp:TextBox ID="txtDateOfEmployment" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtDateOfEmployment" runat="server" ToolTip="Date needs to be in the format: dd/mm/yyyy hh:mm:ss"></asp:TextBox>
         <br />
         <asp:Label ID="lblIsEmployed" runat="server" Text="Is Employed" width="165px"></asp:Label>
         <asp:CheckBox ID="chkIsEmployed" runat="server" />
