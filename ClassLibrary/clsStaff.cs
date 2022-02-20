@@ -1,23 +1,24 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary
 {
     public class clsStaff
     {
 
-        // Adds private DateAdded variable.
-        private DateTime mDateAdded;
-        public DateTime DateAdded
+        // Adds private DateofEmployment variable.
+        private DateTime mDateofEmployment;
+        public DateTime DateofEmployment
         {
             get
             {
                 // Returns the private data.
-                return mDateAdded;
+                return mDateofEmployment;
             }
             set
             {
                 // Sets the private data.
-                mDateAdded = value;
+                mDateofEmployment = value;
             }
         }
 
@@ -119,7 +120,7 @@ namespace ClassLibrary
                 mStaffNo = Convert.ToInt32(DB.DataTable.Rows[0]["StaffNo"]);
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
                 mStaffRole = Convert.ToString(DB.DataTable.Rows[0]["StaffRole"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfEmployment"]);               
+                mDateofEmployment = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfEmployment"]);               
                 mStaffSalary = Convert.ToInt32(DB.DataTable.Rows[0]["StaffSalary"]);
                 mIsEmployed = Convert.ToBoolean(DB.DataTable.Rows[0]["IsEmployed"]);
 
@@ -131,6 +132,76 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+
+        // Method for public validation.
+        public string Validation(string staffName, string staffRole, string dateOfEmployment)
+            // Accepting 3 parameters, the method returns a string containing any error message. If no errors are found, a blank message is returned.
+        {
+            DateTime TempDate;
+
+            // Stores error message.
+            String Errormsg = "";
+
+            // Regex variable that'll be used to check if a given string contains illegal numbers.
+            Regex rejexs = new Regex("[0-9]");
+            
+            // This section handles special cases for the staffName variable.
+            if (staffName.Length == 0)
+            {
+                // Records the error
+                Errormsg = Errormsg + "The staff name cannot be blank : ";
+            }
+            if (staffName.Length > 64)
+            {
+                // Records the error
+                Errormsg = Errormsg + "The name must be less than 64 characters : ";
+            }
+            if (rejexs.IsMatch(staffName))
+            {
+                // Records the error.
+                Errormsg = Errormsg + "Staff names cannot contain numbers : ";
+            }
+
+            // This section handles special cases for the staffRole variable.
+            if (staffRole.Length == 0)
+            {
+                // Records the error.
+                Errormsg = Errormsg + "The staff role cannot be blank : ";
+            }
+            if (staffRole.Length > 64)
+            {
+                // Records the error.
+                Errormsg = Errormsg + "The staff role cannot exceed 64 characters : ";
+            }
+            if (rejexs.IsMatch(staffRole))
+            {
+                // Records the error.
+                Errormsg = Errormsg + "Staff roles cannot contain numbers : ";
+            }
+
+            // This section handles special cases for the dateOfEmployment variable.
+            // The following variable will copy the dateOfEmployment value to the TempDate variable.
+            TempDate = Convert.ToDateTime(dateOfEmployment);
+            try
+            {
+                if (TempDate < DateTime.Now.Date)
+                {
+                    // Records the error.
+                     Errormsg = Errormsg + "The date cannot be in the past : ";
+                }
+                if (TempDate > DateTime.Now.Date)
+                {
+                    // Records the error.
+                    Errormsg = Errormsg + "The date cannot be in the future : ";
+                }
+            } 
+            catch
+            {
+                Errormsg = Errormsg + "The date wasn't a valid date : ";
+            }
+
+            return Errormsg;
         }
     }
 }

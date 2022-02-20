@@ -43,7 +43,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Adds salary as an integer.
         sampleStaffData.StaffSalary = Convert.ToInt32(txtStaffSalary.Text); 
         // Adds date, so long as it adheres to the DateTime format - dd/mm/yyyy - hh:mm:ss
-        sampleStaffData.DateAdded = Convert.ToDateTime(txtDateOfEmployment.Text);
+        sampleStaffData.DateofEmployment = Convert.ToDateTime(txtDateOfEmployment.Text);
         // Adds checkbox data for whether they're employed or not.
         sampleStaffData.IsEmployed = chkIsEmployed.Checked;
         // Store the input data in the session object.
@@ -70,7 +70,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             txtStaffName.Text = findStaff.StaffName;
             txtStaffRole.Text = findStaff.StaffRole;
-            txtDateOfEmployment.Text = findStaff.DateAdded.ToString();
+            txtDateOfEmployment.Text = findStaff.DateofEmployment.ToString();
             txtStaffSalary.Text = findStaff.StaffSalary.ToString();
             // This one makes sure to click the checkbox IF it finds that the individual is employed or not.
             chkIsEmployed.Checked = findStaff.IsEmployed;
