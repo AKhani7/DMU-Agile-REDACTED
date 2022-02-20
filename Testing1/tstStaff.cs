@@ -628,7 +628,7 @@ namespace TestPlanImplementation
         {
             // Creates a new instance of the class that we need.
             clsStaff SampleStaff = new clsStaff();
-            // String variable to store nay errors that may occur.
+            // String variable to store any errors that may occur.
             String Error = "";
             // Creates a variable to store the test date data.
             DateTime TestDate;
