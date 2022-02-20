@@ -15,6 +15,6 @@ public partial class _1Viewer : System.Web.UI.Page
         // Retrieves the data from the session object.
         staff = (clsStaff)Session["sampleStaffData"];
         // Displays the staff role on the page (hopefully).
-        Response.Write(staff.StaffNo  + "\n" + staff.StaffName + "\n" + staff.StaffRole + "\n" + "£" + staff.StaffSalary + "\n" + staff.DateofEmployment + "\n" + staff.IsEmployed);
+        Response.Write(staff.StaffName + "<br />" + staff.StaffRole + "<br />" + "£" + staff.StaffSalary + "<br />" + staff.DateofEmployment + "<br />" + staff.IsEmployed);
     }
 }

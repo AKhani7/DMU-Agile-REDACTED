@@ -33,23 +33,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         // Creates a new instance of clsStaff.
         clsStaff sampleStaffData = new clsStaff();
-        // Captures the user's input data.
-        //Sets the Staff Number. TODO - make this unable to have an input + have a find method attached.
-        sampleStaffData.StaffNo = Convert.ToInt32(txtStaffNo.Text);
-        // Adds a staff name.
-        sampleStaffData.StaffName = txtStaffName.Text;
-        // Adds a staff role.
-        sampleStaffData.StaffRole = txtStaffRole.Text;
-        // Adds salary as an integer.
-        sampleStaffData.StaffSalary = Convert.ToInt32(txtStaffSalary.Text); 
-        // Adds date, so long as it adheres to the DateTime format - dd/mm/yyyy - hh:mm:ss
-        sampleStaffData.DateofEmployment = Convert.ToDateTime(txtDateOfEmployment.Text);
-        // Adds checkbox data for whether they're employed or not.
-        sampleStaffData.IsEmployed = chkIsEmployed.Checked;
-        // Store the input data in the session object.
-        Session["sampleStaffData"] = sampleStaffData;
-        // This will make it navigate to the Viewer page.
-        Response.Redirect("StaffViewer.aspx");
+        // The following section captures all the data field entries.
+        //string StaffNo = txtStaffNo.Text;
+        string StaffName = txtStaffName.Text;
+        string StaffRole = txtStaffRole.Text;
+        int StaffSalary = Convert.ToInt32(txtStaffSalary.Text); 
+        string DateOfEmployment = txtDateOfEmployment.Text;
+
+        // Creates a variable to store any error message.
+        string Error = "";
+
+        // Validates the data.
+        Error = sampleStaffData.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+        if (Error == "")
+        {
+            // Captures the user's input data
+            //sampleStaffData.StaffNo = Convert.ToInt32(txtStaffNo.Text);
+            // Adds a staff name.
+            sampleStaffData.StaffName = txtStaffName.Text;
+            // Adds a staff role.
+            sampleStaffData.StaffRole = txtStaffRole.Text;
+            // Adds salary as an integer.
+            sampleStaffData.StaffSalary = Convert.ToInt32(txtStaffSalary.Text);
+            // Adds date, so long as it adheres to the DateTime format - dd/mm/yyyy - hh:mm:ss
+            sampleStaffData.DateofEmployment = Convert.ToDateTime(txtDateOfEmployment.Text);
+            // Adds checkbox data for whether they're employed or not.
+            sampleStaffData.IsEmployed = chkIsEmployed.Checked;
+            // Store the input data in the session object.
+            Session["sampleStaffData"] = sampleStaffData;
+            // This will make it navigate to the Viewer page.
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            // Displays the error message.
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

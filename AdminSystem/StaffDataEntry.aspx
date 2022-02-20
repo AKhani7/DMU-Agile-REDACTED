@@ -9,14 +9,10 @@
     <title>Staff Data Entry Page</title>
 </head>
 <body>
-    <h2>Responsive Text test. If this works, then the webpage should always be responsive.</h2>
-    <p>This should also be responsive, but in a paragraph format. I prefer HTML to using the Design functionality in Visual Studio. 
-        Despite this, I think making it look responsive not only makes it look nice, but it also allows me to test functionality.</p>
-
     <form id="form1" runat="server">
         <div id="lblStaffNo">
             <asp:Label ID="Label1" runat="server" Text="Staff No" width="165px"></asp:Label>
-            <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="txtStaffNo_TextChanged" ToolTip="Must be an integer value, else an error will occur." ></asp:TextBox>
+            <asp:TextBox ID="txtStaffNo" runat="server" TextMode="Number" OnTextChanged="txtStaffNo_TextChanged" ToolTip="Only used for the Find function." ></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" style="margin-left: 8px" Text="Find" OnClick="btnFind_Click" />
         </div>
         <asp:Label ID="lblStaffName" runat="server" Text="Staff Name" width="165px"></asp:Label>
@@ -26,12 +22,12 @@
         <asp:TextBox ID="txtStaffRole" runat="server" ></asp:TextBox>
         <br />
         <asp:Label ID="lblStaffSalary" runat="server" Text="Staff Salary (£)" width="165px"></asp:Label>
-        <asp:TextBox ID="txtStaffSalary" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtStaffSalary" runat="server" TextMode="Number" ToolTip="Negative salary inputs will not be accepted, and will cause an error to occur."></asp:TextBox>
         <br />
         <asp:Label ID="lblDateOfEmployment" runat="server" Text="Date Of Employment"></asp:Label>
-        <asp:TextBox ID="txtDateOfEmployment" runat="server" ToolTip="Date needs to be in the format: dd/mm/yyyy hh:mm:ss"></asp:TextBox>
+        <asp:TextBox ID="txtDateOfEmployment" runat="server" TextMode="Date" ToolTip="The time will be set to default values - 00:00:00 or 12:00:00."></asp:TextBox>
         <br />
-        <asp:Label ID="lblIsEmployed" runat="server" Text="Is Employed" width="165px"></asp:Label>
+        <asp:Label ID="lblIsEmployed" runat="server" Text="Is Employed" ToolTip="Check this if the new entry is employed or not." width="165px"></asp:Label>
         <asp:CheckBox ID="chkIsEmployed" runat="server" />
         <br />
         <br />

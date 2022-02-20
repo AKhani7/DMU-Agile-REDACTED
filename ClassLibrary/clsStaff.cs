@@ -135,7 +135,7 @@ namespace ClassLibrary
         }
 
         // Method for public validation.
-        public string Validation(string staffName, string staffRole, string dateOfEmployment)
+        public string Validation(string staffName, string staffRole, int staffSalary, string dateOfEmployment)
             // Accepting 3 parameters, the method returns a string containing any error message. If no errors are found, a blank message is returned.
         {
             DateTime TempDate;
@@ -150,36 +150,52 @@ namespace ClassLibrary
             if (staffName.Length == 0)
             {
                 // Records the error
-                Errormsg = Errormsg + "The staff name cannot be blank : ";
+                Errormsg = Errormsg + "The staff name cannot be blank. <br />";
             }
             if (staffName.Length > 64)
             {
                 // Records the error
-                Errormsg = Errormsg + "The name must be less than 64 characters : ";
+                Errormsg = Errormsg + "The name must be less than 64 characters. <br /> ";
             }
             if (rejexs.IsMatch(staffName))
             {
                 // Records the error.
-                Errormsg = Errormsg + "Staff names cannot contain numbers : ";
+                Errormsg = Errormsg + "Staff names cannot contain numbers. <br /> ";
             }
 
             // This section handles special cases for the staffRole variable.
             if (staffRole.Length == 0)
             {
                 // Records the error.
-                Errormsg = Errormsg + "The staff role cannot be blank : ";
+                Errormsg = Errormsg + "The staff role cannot be blank. <br /> ";
             }
             if (staffRole.Length > 64)
             {
                 // Records the error.
-                Errormsg = Errormsg + "The staff role cannot exceed 64 characters : ";
+                Errormsg = Errormsg + "The staff role cannot exceed 64 characters. <br /> ";
             }
             if (rejexs.IsMatch(staffRole))
             {
                 // Records the error.
-                Errormsg = Errormsg + "Staff roles cannot contain numbers : ";
+                Errormsg = Errormsg + "Staff roles cannot contain numbers. <br /> ";
             }
 
+            // This section handles the staff salary and ensures that values are below the max, and above 0.
+            if (staffSalary < 0)
+            {
+                // Records the error.
+                Errormsg = Errormsg + "Staff salary cannot be a negative value. <br />";
+            }
+            if (staffSalary > 2147483647)
+            {
+                //Records the error.
+                Errormsg = Errormsg + "Staff salary cannot exceed integer maximum value. <br />";
+            }
+            if (staffSalary.ToString().Contains("e")) // This accounts for exponent value inputs.
+            {
+                // Records the error
+                Errormsg = Errormsg + "Unfortunately, staff salary input doesn't accept exponents. <br />";
+            }
             // This section handles special cases for the dateOfEmployment variable.
             // The following variable will copy the dateOfEmployment value to the TempDate variable.
             TempDate = Convert.ToDateTime(dateOfEmployment);
@@ -188,17 +204,17 @@ namespace ClassLibrary
                 if (TempDate < DateTime.Now.Date)
                 {
                     // Records the error.
-                     Errormsg = Errormsg + "The date cannot be in the past : ";
+                     Errormsg = Errormsg + "The date cannot be in the past. <br /> ";
                 }
                 if (TempDate > DateTime.Now.Date)
                 {
                     // Records the error.
-                    Errormsg = Errormsg + "The date cannot be in the future : ";
+                    Errormsg = Errormsg + "The date cannot be in the future. <br /> ";
                 }
             } 
             catch
             {
-                Errormsg = Errormsg + "The date wasn't a valid date : ";
+                Errormsg = Errormsg + "The date wasn't a valid date. <br /> ";
             }
 
             return Errormsg;
