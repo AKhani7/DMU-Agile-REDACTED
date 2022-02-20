@@ -11,6 +11,7 @@ namespace Testing1
         // Test data that can be used to test and pass methods.
         string StaffName = "Timothy Jones";
         string StaffRole = "Team Manager";
+        int StaffSalary = 10000;
         string DateOfEmployment = DateTime.Now.ToString();
 
         [TestMethod]
@@ -245,7 +246,7 @@ namespace Testing1
             // String variable to store any error message.
             String Error = "";
             // Invokes the validation method.
-            Error = sampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = sampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
         }
     }
 }
@@ -259,6 +260,7 @@ namespace TestPlanImplementation
         // Test data that can be used to test and pass methods.
         string StaffName = "Timothy Jones";
         string StaffRole = "Team Manager";
+        int StaffSalary = 10000;
         string DateOfEmployment = DateTime.Now.Date.ToString();
 
         [TestMethod]
@@ -271,7 +273,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffName = "";
             // Invokes validation method. This should result in an error (since StaffName cannot be null).
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -286,7 +288,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffName  = "x";
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -301,7 +303,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffName = "xx";
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -317,7 +319,7 @@ namespace TestPlanImplementation
             string StaffName = "";
             StaffName = StaffName.PadRight(32, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -333,7 +335,7 @@ namespace TestPlanImplementation
             string StaffName = "";
             StaffName = StaffName.PadRight(63, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -349,7 +351,7 @@ namespace TestPlanImplementation
             string StaffName = "";
             StaffName = StaffName.PadRight(64, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -365,7 +367,7 @@ namespace TestPlanImplementation
             string StaffName = "";
             StaffName = StaffName.PadRight(65, 'x');
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -381,7 +383,7 @@ namespace TestPlanImplementation
             string StaffName = "";
             StaffName = StaffName.PadRight(320, 'x');
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -396,7 +398,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             string StaffName = "32Johnny Tyler 16Blevins 31";
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -411,7 +413,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffRole = "";
             // Invokes validation method. This should result in an error (since StaffName cannot be null).
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -426,7 +428,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffRole = "x";
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -441,7 +443,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             String StaffRole = "xx";
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -457,7 +459,7 @@ namespace TestPlanImplementation
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(32, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -473,7 +475,7 @@ namespace TestPlanImplementation
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(63, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -489,7 +491,7 @@ namespace TestPlanImplementation
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(64, 'x');
             // Invokes validation method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -505,7 +507,7 @@ namespace TestPlanImplementation
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(65, 'x');
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -521,7 +523,7 @@ namespace TestPlanImplementation
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(320, 'x');
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -536,7 +538,7 @@ namespace TestPlanImplementation
             // Creates some test data to pass to method.
             string StaffRole = "32Johnny Tyler 16Blevins 31";
             // Invokes validation method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -557,7 +559,7 @@ namespace TestPlanImplementation
             // Convert the date variable to a string variable.
             string DateOfEmployment = TestDate.ToString();
             // Invoke the method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correect.
             Assert.AreNotEqual(Error, "");
         }
@@ -578,7 +580,7 @@ namespace TestPlanImplementation
             // Convert the date variable to a string variable.
             string DateOfEmployment = TestDate.ToString();
             // Invoke the method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -597,7 +599,7 @@ namespace TestPlanImplementation
             // Convert the date variable to a string variable.
             string DateOfEmployment = TestDate.ToString();
             // Invokes the method. This should pass.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Test to see if the result is correct.
             Assert.AreEqual(Error, "");
         }
@@ -618,7 +620,7 @@ namespace TestPlanImplementation
             // Convert the date variable to a string variable.
             string DateOfEmployment = TestDate.ToString();
             // Invokes the method. This shouldn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
         }
@@ -639,9 +641,99 @@ namespace TestPlanImplementation
             //Convert the date variable to a string variable.
             string DateOfEmployment = TestDate.ToString();
             // Invokes the method. This shoudn't 'pass'.
-            Error = SampleStaff.Validation(StaffName, StaffRole, DateOfEmployment);
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
             // Tests to see if the result is correct.
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryExtremeMin()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = -2147483648;
+            // Invokes the method. This shouldn't 'pass'.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if the result is correct.
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryMinLessOne()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = -1;
+            // Invokes the method. This shouldn't 'pass'.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if the result is correct.
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryMin()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = 0;
+            // Invokes the method. This should pass.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if the result is correct.
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryMinPlusOne()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = 1;
+            // invokes the method. This should pass.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if the result is correct.
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryMaxLessOne()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = 2147483646;
+            // Invokes the method. This should pass.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if the result is correct.
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffSalaryMax()
+        {
+            // Creates a new instance of the class that we need.
+            clsStaff SampleStaff = new clsStaff();
+            // String variable to store any errors that may occur.
+            String Error = "";
+            // Sets salary variable to a value.
+            int StaffSalary = 2147483647;
+            // Invokes the method. This should pass.
+            Error = SampleStaff.Validation(StaffName, StaffRole, StaffSalary, DateOfEmployment);
+            // Tests to see if this result is correct.
+            Assert.AreEqual(Error, "");
         }
     }
 }
